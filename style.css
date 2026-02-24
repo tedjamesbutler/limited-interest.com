@@ -360,6 +360,7 @@ figure img {
 /* Carousel */
 .carousel {
     position: relative;
+    max-width: 500px;
 }
 
 .carousel-track {
