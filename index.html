@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limited Interest</title>
+    <link href="https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-mono/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav>
+        <a href="/">LIMITED INTEREST</a>
+        <a href="/releases.html">releases</a>
+        <a href="/about.html">about</a>
+    </nav>
+
+    <main id="content">
+        <noscript>
+            <p>This site requires JavaScript to function. Please enable JavaScript and refresh the page.</p>
+        </noscript>
+        <p id="js-error" style="display:none; padding: 2rem;">
+            Failed to load site. Please <a href="javascript:location.reload(true)">hard refresh</a> or clear your browser cache.
+        </p>
+    </main>
+
+    <footer>
+        <span>&copy; 2026 | LIMITED INTEREST</span>
+        <span><a href="https://ted.rip">ted.rip</a></span>
+    </footer>
+
+    <script>
+        window.onerror = function() {
+            document.getElementById('js-error').style.display = 'block';
+        };
+    </script>
+    <script src="/audio-manager.js" onerror="document.getElementById('js-error').style.display='block'"></script>
+    <script src="/audio-player.js" onerror="document.getElementById('js-error').style.display='block'"></script>
+    <script src="/router.js" onerror="document.getElementById('js-error').style.display='block'"></script>
+    <script>
+        const router = new Router(document.getElementById('content'), {
+            basePath: '/pages',
+            defaultPage: 'home',
+            onNavigate: (pageName, contentEl) => {
+                window.audioManager.clearPlayers();
+
+                const scripts = contentEl.querySelectorAll('script');
+                scripts.forEach(script => {
+                    try {
+                        if (script.src) {
+                            const newScript = document.createElement('script');
+                            newScript.src = script.src;
+                            document.body.appendChild(newScript);
+                        } else {
+                            eval(script.textContent);
+                        }
+                        script.remove();
+                    } catch (e) {
+                        console.error('Script execution error:', e);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

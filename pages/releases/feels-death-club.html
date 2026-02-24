@@ -1,0 +1,56 @@
+<p><a href="/">&larr; Limited Interest</a></p>
+<article>
+    <p><strong>FEELS / Death Club</strong> <span class="post-date">2014-11-11</span></p>
+    <p>Split release featuring 2 tracks from Anthony Ferreira and Ted James Butler's FEELS project; backed by a pair of pre-Head Dress tracks from Butler's solo project, Death Club.</p>
+    <p>Collage, layout and printing courtesy James Livingston of Black Horizons.</p>
+    <p>Limited to 50 copies.</p>
+
+    <figure>
+        <img loading="lazy" src="/assets/feels-deathclub.webp" alt="FEELS / Death Club cassette">
+        <figcaption></figcaption>
+    </figure>
+
+    <div id="feels-deathclub-player"></div>
+
+    <div class="carousel">
+        <div class="carousel-track">
+            <figure><img loading="lazy" src="/assets/feels-1.webp" alt="FEELS / Death Club packaging"></figure>
+            <figure><img loading="lazy" src="/assets/feels-2.webp" alt="FEELS / Death Club packaging"></figure>
+            <figure><img loading="lazy" src="/assets/feels-3.webp" alt="FEELS / Death Club packaging"></figure>
+        </div>
+        <div class="carousel-nav">
+            <button class="carousel-prev">&larr;</button>
+            <span class="carousel-counter">1 / 3</span>
+            <button class="carousel-next">&rarr;</button>
+        </div>
+    </div>
+</article>
+
+<p class="release-nav">
+    <span></span>
+    <a href="/releases.html">all releases</a>
+    <a href="/releases/delible.html">Delible &rarr;</a>
+</p>
+
+<script>
+    document.querySelectorAll('.carousel').forEach(function(carousel) {
+        var track = carousel.querySelector('.carousel-track');
+        var counter = carousel.querySelector('.carousel-counter');
+        var prev = carousel.querySelector('.carousel-prev');
+        var next = carousel.querySelector('.carousel-next');
+        var total = track.querySelectorAll('figure').length;
+        function update() {
+            var index = Math.round(track.scrollLeft / track.offsetWidth);
+            counter.textContent = (index + 1) + ' / ' + total;
+        }
+        prev.addEventListener('click', function() { track.scrollBy({ left: -track.offsetWidth, behavior: 'smooth' }); });
+        next.addEventListener('click', function() { track.scrollBy({ left: track.offsetWidth, behavior: 'smooth' }); });
+        track.addEventListener('scroll', update);
+    });
+    new AudioPlayer(document.getElementById('feels-deathclub-player'), [
+        { title: 'Death Club - 808s', src: '/assets/feels-deathclub-001.mp3' },
+        { title: 'Death Club - Push Me', src: '/assets/feels-deathclub-002.mp3' },
+        { title: 'Feels - Always', src: '/assets/feels-deathclub-003.mp3' },
+        { title: 'Feels - Forget It', src: '/assets/feels-deathclub-004.mp3' }
+    ], { name: 'FEELS / Death Club' });
+</script>

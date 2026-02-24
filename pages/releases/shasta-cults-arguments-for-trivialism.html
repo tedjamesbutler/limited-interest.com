@@ -1,0 +1,58 @@
+<p><a href="/">&larr; Limited Interest</a></p>
+<article>
+    <p><strong>Shasta Cults - Arguments For Trivialism</strong> <span class="post-date">May 2017</span></p>
+
+    <figure>
+        <img loading="lazy" src="/assets/shasta-cover.webp" alt="Shasta Cults - Arguments For Trivialism cassette cover">
+        <figcaption></figcaption>
+    </figure>
+
+    <div id="shasta-player"></div>
+
+    <p>"Alessandro Cortini and Ted James Butler's Limited Interest label pull out a reel bewt with Shasta Cults' bittersweet ambient extraction, Arguments For Trivialism; joining the likes of former Jane's Addiction bassist Eric Avery (Delible) and Karl Fousek on one of the most intriguing cassette series in circulation right now.</p>
+    <p>The work of one Richard Smith, who's previously collaborated with Sarah Davachi and played in Von Bingen, Arguments For Trivialism sounds like a proper, heat-warped LA fever dream, traversing sweeping symphonic strokes thru to Terminator II flashback drones and abattoir chiller pads, delivering his sound in thick lustrous density, but with plenty of attention to timbral detail and gripping texture.</p>
+    <p>It starts out kind of positive with Augur, like the smog's not too bad today, but soon enough descends into apocalyptic heaviness with The Shape, while Chroma offers some light-headed new age respite, and we're again exposed to strong outside forces with the glacially impending new age/horror trajectory of CMOS and the epic fantasy drone of Dropship, which could feasibly soundtrack the arrival of an alien craft over Hollywood."</p>
+    <p>-Boomkat</p>
+
+    <div class="carousel">
+        <div class="carousel-track">
+            <figure><img loading="lazy" src="/assets/shasta-1.webp" alt="Shasta Cults packaging"></figure>
+            <figure><img loading="lazy" src="/assets/shasta-2.webp" alt="Shasta Cults packaging"></figure>
+            <figure><img loading="lazy" src="/assets/shasta-3.webp" alt="Shasta Cults packaging"></figure>
+        </div>
+        <div class="carousel-nav">
+            <button class="carousel-prev">&larr;</button>
+            <span class="carousel-counter">1 / 3</span>
+            <button class="carousel-next">&rarr;</button>
+        </div>
+    </div>
+</article>
+
+<p class="release-nav">
+    <a href="/releases/hainbach-cello-pattern.html">&larr; Hainbach</a>
+    <a href="/releases.html">all releases</a>
+    <span></span>
+</p>
+
+<script>
+    document.querySelectorAll('.carousel').forEach(function(carousel) {
+        var track = carousel.querySelector('.carousel-track');
+        var counter = carousel.querySelector('.carousel-counter');
+        var prev = carousel.querySelector('.carousel-prev');
+        var next = carousel.querySelector('.carousel-next');
+        var total = track.querySelectorAll('figure').length;
+        function update() {
+            var index = Math.round(track.scrollLeft / track.offsetWidth);
+            counter.textContent = (index + 1) + ' / ' + total;
+        }
+        prev.addEventListener('click', function() { track.scrollBy({ left: -track.offsetWidth, behavior: 'smooth' }); });
+        next.addEventListener('click', function() { track.scrollBy({ left: track.offsetWidth, behavior: 'smooth' }); });
+        track.addEventListener('scroll', update);
+    });
+    new AudioPlayer(document.getElementById('shasta-player'), [
+        { title: 'Preview 001', src: '/assets/shasta-001.mp3' },
+        { title: 'Preview 002', src: '/assets/shasta-002.mp3' },
+        { title: 'Preview 003', src: '/assets/shasta-003.mp3' },
+        { title: 'Preview 004', src: '/assets/shasta-004.mp3' }
+    ], { name: 'Shasta Cults' });
+</script>

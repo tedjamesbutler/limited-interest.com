@@ -1,0 +1,60 @@
+<p><a href="/">&larr; Limited Interest</a></p>
+<article>
+    <p><strong>Hainbach - Cello Pattern</strong> <span class="post-date">May 2017</span></p>
+
+    <figure>
+        <img loading="lazy" src="/assets/hainbach-cover.webp" alt="Hainbach - Cello Pattern cassette cover">
+        <figcaption></figcaption>
+    </figure>
+
+    <div id="hainbach-player"></div>
+
+    <p>"Berlin's Stefan Paul Goetsch imagines a gorgeous, free-floating sort of chamber music with Cello Pattern on Alessandro Cortini and Ted James Butler's Limited Interest label.</p>
+    <p>The label's 3rd release firmer grasps the light that broke thru the clouds in previous instalments by Karl Fousek and Delible, locating a quietly unhurried and centred space to play out 11 pieces framed around wistful melodies and elusive structures, all recorded in the Black Forest, 2015.</p>
+    <p>There's a deeply sylvan quality to Cello Pattern which almost unmistakably recalls a passing time of fading light in the midst of nature, when ferns phosphoresce and the first murmurs of avian chorusses begin to colour the air, celebrating the day and warning of night to come.</p>
+    <p>In this liminal cusp-like zone, he crosses paths between the coruscating string like tones of Anne Guthrie and the quivering etudes of Six Swords' Feireenesse, or even elements of NYZ's inimitable acousmata and AFX's SAW II - in essence a deeply narcotic, oneiric and transportive sound that soothes as well as haunts the listener.</p>
+    <p>Recommended."</p>
+    <p>-Boomkat</p>
+
+    <div class="carousel">
+        <div class="carousel-track">
+            <figure><img loading="lazy" src="/assets/hainbach-1.webp" alt="Hainbach packaging"></figure>
+            <figure><img loading="lazy" src="/assets/hainbach-2.webp" alt="Hainbach packaging"></figure>
+            <figure><img loading="lazy" src="/assets/hainbach-3.webp" alt="Hainbach packaging"></figure>
+        </div>
+        <div class="carousel-nav">
+            <button class="carousel-prev">&larr;</button>
+            <span class="carousel-counter">1 / 3</span>
+            <button class="carousel-next">&rarr;</button>
+        </div>
+    </div>
+</article>
+
+<p class="release-nav">
+    <a href="/releases/karl-fousek-one-another.html">&larr; Karl Fousek</a>
+    <a href="/releases.html">all releases</a>
+    <a href="/releases/shasta-cults-arguments-for-trivialism.html">Shasta Cults &rarr;</a>
+</p>
+
+<script>
+    document.querySelectorAll('.carousel').forEach(function(carousel) {
+        var track = carousel.querySelector('.carousel-track');
+        var counter = carousel.querySelector('.carousel-counter');
+        var prev = carousel.querySelector('.carousel-prev');
+        var next = carousel.querySelector('.carousel-next');
+        var total = track.querySelectorAll('figure').length;
+        function update() {
+            var index = Math.round(track.scrollLeft / track.offsetWidth);
+            counter.textContent = (index + 1) + ' / ' + total;
+        }
+        prev.addEventListener('click', function() { track.scrollBy({ left: -track.offsetWidth, behavior: 'smooth' }); });
+        next.addEventListener('click', function() { track.scrollBy({ left: track.offsetWidth, behavior: 'smooth' }); });
+        track.addEventListener('scroll', update);
+    });
+    new AudioPlayer(document.getElementById('hainbach-player'), [
+        { title: 'Preview 001', src: '/assets/hainbach-001.mp3' },
+        { title: 'Preview 002', src: '/assets/hainbach-002.mp3' },
+        { title: 'Preview 003', src: '/assets/hainbach-003.mp3' },
+        { title: 'Preview 004', src: '/assets/hainbach-004.mp3' }
+    ], { name: 'Hainbach' });
+</script>

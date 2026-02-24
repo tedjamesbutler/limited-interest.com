@@ -1,0 +1,59 @@
+<p><a href="/">&larr; Limited Interest</a></p>
+<article>
+    <p><strong>Delible</strong> <span class="post-date">May 2017</span></p>
+    <p>Second edition. Originally released October 2016.</p>
+
+    <figure>
+        <img loading="lazy" src="/assets/delible-cover.webp" alt="Delible cassette cover">
+        <figcaption></figcaption>
+    </figure>
+
+    <div id="delible-player"></div>
+
+    <p>"Alessandro Cortini and Ted James Butler's Limited Interest label present a heady session of modular synth expressions by Eric Avery, the co-founder and original bass player for LA rock band, Jane's Addiction. Safe to say you won't hear this one on VH1 any time ever.</p>
+    <p>Veering sharply away from his early work with Jane's Addiction and more recent solo exploits such as Life.Time [2013], Avery's latest picks up where he left off on a remix of Cortini's Scientist as Sonoio in 2011, channelling himself thru the wires of a modular synth setup and samplers and into vast recursive spaces and spooling synth noise scapes more akin to fellow west coaster Jefre Cantu-Ledesma than anything else you'd naturally associate him with.</p>
+    <p>Whilst belied by a title that hints at fragility and ephemerality, Delible's widescreen panoramas are painted in broad, confident strokes and shot thru with a rich melodic pathos, helping it to stake a fine balance of grounded modesty and star-clawing ambition from the windswept Gas-like spell of German Requiem to the bittersweetness of his Aldeburgh Sea (Sunset) and Aldeburgh Sea (Sunrise) numbers which engulf the B-side, and 'fessing up a sort of nerve-shot but determined new age and kosmiche spirit in the spaces between."</p>
+    <p>-Boomkat</p>
+
+    <div class="carousel">
+        <div class="carousel-track">
+            <figure><img loading="lazy" src="/assets/delible-1.webp" alt="Delible packaging"></figure>
+            <figure><img loading="lazy" src="/assets/delible-2.webp" alt="Delible packaging"></figure>
+            <figure><img loading="lazy" src="/assets/delible-3.webp" alt="Delible packaging"></figure>
+        </div>
+        <div class="carousel-nav">
+            <button class="carousel-prev">&larr;</button>
+            <span class="carousel-counter">1 / 3</span>
+            <button class="carousel-next">&rarr;</button>
+        </div>
+    </div>
+</article>
+
+<p class="release-nav">
+    <a href="/releases/feels-death-club.html">&larr; FEELS / Death Club</a>
+    <a href="/releases.html">all releases</a>
+    <a href="/releases/karl-fousek-one-another.html">Karl Fousek &rarr;</a>
+</p>
+
+<script>
+    document.querySelectorAll('.carousel').forEach(function(carousel) {
+        var track = carousel.querySelector('.carousel-track');
+        var counter = carousel.querySelector('.carousel-counter');
+        var prev = carousel.querySelector('.carousel-prev');
+        var next = carousel.querySelector('.carousel-next');
+        var total = track.querySelectorAll('figure').length;
+        function update() {
+            var index = Math.round(track.scrollLeft / track.offsetWidth);
+            counter.textContent = (index + 1) + ' / ' + total;
+        }
+        prev.addEventListener('click', function() { track.scrollBy({ left: -track.offsetWidth, behavior: 'smooth' }); });
+        next.addEventListener('click', function() { track.scrollBy({ left: track.offsetWidth, behavior: 'smooth' }); });
+        track.addEventListener('scroll', update);
+    });
+    new AudioPlayer(document.getElementById('delible-player'), [
+        { title: 'Preview 001', src: '/assets/delible-001.mp3' },
+        { title: 'Preview 002', src: '/assets/delible-002.mp3' },
+        { title: 'Preview 003', src: '/assets/delible-003.mp3' },
+        { title: 'Preview 004', src: '/assets/delible-004.mp3' }
+    ], { name: 'Delible' });
+</script>
